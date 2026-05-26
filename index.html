@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daftar Peserta Umroh</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#1d2b36;
+  overflow-x:hidden;
+  font-size:85%;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* HERO */
+
+.hero{
+  width:100%;
+  min-height:380px;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.55),
+  rgba(0,0,0,0.55)),
+  url('https://images.unsplash.com/photo-1542816417-0983670d12c8?q=80&w=1200&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  align-items:center;
+
+  padding:60px 20px;
+
+  color:white;
+}
+
+.hero-content{
+  max-width:520px;
+}
+
+.badge{
+  display:inline-block;
+
+  background:#ffd700;
+  color:#222;
+
+  padding:6px 14px;
+
+  border-radius:30px;
+
+  font-size:11px;
+  font-weight:700;
+
+  margin-bottom:15px;
+}
+
+.hero-content h1{
+  font-size:38px;
+  line-height:1.4;
+  margin-bottom:15px;
+}
+
+.hero-content p{
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* SECTION */
+
+.section{
+  padding:45px 15px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.section-title h2{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  color:#666;
+  font-size:12px;
+}
+
+/* INFO */
+
+.info-bar{
+  background:linear-gradient(90deg,#0d6efd,#00b4d8);
+
+  color:white;
+
+  text-align:center;
+
+  padding:14px;
+
+  font-size:13px;
+  font-weight:600;
+}
+
+/* CARD */
+
+.schedule-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+.schedule-card{
+  background:white;
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  box-shadow:0 3px 14px rgba(0,0,0,0.08);
+
+  transition:0.3s;
+}
+
+.schedule-card:hover{
+  transform:translateY(-5px);
+}
+
+.card-header{
+  background:linear-gradient(90deg,#0d6efd,#00b4d8);
+
+  color:white;
+
+  padding:18px;
+}
+
+.card-header h3{
+  font-size:20px;
+  margin-bottom:5px;
+}
+
+.card-header p{
+  font-size:11px;
+  opacity:0.9;
+}
+
+.card-content{
+  padding:18px;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+table th{
+  background:#f0f4fa;
+  padding:10px;
+
+  font-size:11px;
+  text-align:left;
+}
+
+table td{
+  padding:10px;
+
+  border-bottom:1px solid #eee;
+
+  font-size:11px;
+}
+
+.status{
+  display:inline-block;
+
+  padding:4px 10px;
+
+  border-radius:20px;
+
+  font-size:10px;
+  font-weight:600;
+
+  color:white;
+}
+
+.status.ready{
+  background:#28a745;
+}
+
+.status.process{
+  background:#ff9800;
+}
+
+.status.complete{
+  background:#0d6efd;
+}
+
+/* FEATURE */
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.feature-card{
+  background:white;
+
+  border-radius:18px;
+
+  padding:22px;
+
+  text-align:center;
+
+  box-shadow:0 3px 12px rgba(0,0,0,0.06);
+
+  transition:0.3s;
+}
+
+.feature-card:hover{
+  transform:translateY(-5px);
+}
+
+.feature-icon{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+.feature-card h3{
+  margin-bottom:8px;
+  font-size:15px;
+}
+
+.feature-card p{
+  color:#666;
+  line-height:1.7;
+  font-size:11px;
+}
+
+/* CTA */
+
+.cta{
+  background:linear-gradient(90deg,#0d6efd,#00b4d8);
+
+  color:white;
+
+  border-radius:22px;
+
+  padding:35px 20px;
+
+  text-align:center;
+}
+
+.cta h2{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.cta p{
+  margin-bottom:18px;
+  font-size:12px;
+}
+
+.btn-primary{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+
+  text-decoration:none;
+
+  background:white;
+  color:#0d6efd;
+
+  padding:10px 22px;
+
+  border-radius:30px;
+
+  font-size:11px;
+  font-weight:700;
+
+  transition:0.3s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+.footer{
+  background:#10202b;
+  color:white;
+
+  padding:35px 20px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.footer h3{
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.footer p{
+  color:#ddd;
+  line-height:1.7;
+  font-size:11px;
+}
+
+.copyright{
+  margin-top:20px;
+  padding-top:15px;
+
+  border-top:1px solid rgba(255,255,255,0.1);
+
+  text-align:center;
+
+  color:#aaa;
+  font-size:10px;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+  position:fixed;
+
+  right:15px;
+  bottom:15px;
+
+  width:52px;
+  height:52px;
+
+  background:#25D366;
+
+  border-radius:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:999;
+
+  box-shadow:
+  0 0 12px rgba(37,211,102,0.6),
+  0 0 24px rgba(37,211,102,0.4);
+}
+
+.whatsapp img{
+  width:28px;
+  height:28px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  body{
+    font-size:78%;
+  }
+
+  .hero{
+    min-height:260px;
+    padding:30px 15px;
+    align-items:flex-end;
+  }
+
+  .hero-content h1{
+    font-size:22px;
+  }
+
+  .hero-content p{
+    font-size:10px;
+  }
+
+  .section{
+    padding:35px 12px;
+  }
+
+  .section-title h2{
+    font-size:22px;
+  }
+
+  .card-header h3{
+    font-size:18px;
+  }
+
+  .cta h2{
+    font-size:22px;
+  }
+
+}
+
+/* AOS FIX */
+
+[data-aos]{
+  pointer-events:none;
+}
+
+[data-aos].aos-animate{
+  pointer-events:auto;
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content" data-aos="fade-right">
+
+    <div class="badge">
+      JADWAL KEBERANGKATAN ✨
+    </div>
+
+    <h1>
+      Daftar Peserta Umroh yang Akan Berangkat
+    </h1>
+
+    <p>
+      Informasi jadwal keberangkatan jamaah umroh
+      untuk 1 bulan, 2 bulan, 3 bulan kedepan
+      dan seterusnya secara lengkap.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- INFO -->
+
+<div class="info-bar">
+  📋 Data Jamaah Selalu Diperbarui • Jadwal Keberangkatan Resmi
+</div>
+
+<!-- SECTION -->
+
+<section class="section">
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>Jadwal Jamaah Umroh</h2>
+    <p>Berikut daftar peserta umroh berdasarkan jadwal keberangkatan</p>
+  </div>
+
+  <div class="schedule-grid">
+
+    <!-- 1 BULAN -->
+
+    <div class="schedule-card" data-aos="fade-up">
+
+      <div class="card-header">
+        <h3>1 Bulan Kedepan</h3>
+        <p>Keberangkatan Juli 2026</p>
+      </div>
+
+      <div class="card-content">
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+              <th>Nama Jamaah</th>
+              <th>Kota</th>
+              <th>Status</th>
+            </tr>
+
+            <tr>
+              <td>Ahmad Fauzi</td>
+              <td>Garut</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Siti Aminah</td>
+              <td>Bandung</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Hendra Wijaya</td>
+              <td>Tasikmalaya</td>
+              <td>
+                <span class="status process">
+                  Proses
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Nurhalimah</td>
+              <td>Jakarta</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 2 BULAN -->
+
+    <div class="schedule-card"
+    data-aos="fade-up"
+    data-aos-delay="100">
+
+      <div class="card-header">
+        <h3>2 Bulan Kedepan</h3>
+        <p>Keberangkatan Agustus 2026</p>
+      </div>
+
+      <div class="card-content">
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+              <th>Nama Jamaah</th>
+              <th>Kota</th>
+              <th>Status</th>
+            </tr>
+
+            <tr>
+              <td>Muhammad Rizki</td>
+              <td>Garut</td>
+              <td>
+                <span class="status complete">
+                  Lengkap
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Rina Marlina</td>
+              <td>Cirebon</td>
+              <td>
+                <span class="status process">
+                  Proses
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Abdul Karim</td>
+              <td>Bekasi</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Yayah Nurjanah</td>
+              <td>Bandung</td>
+              <td>
+                <span class="status complete">
+                  Lengkap
+                </span>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 3 BULAN -->
+
+    <div class="schedule-card"
+    data-aos="fade-up"
+    data-aos-delay="200">
+
+      <div class="card-header">
+        <h3>3 Bulan Kedepan</h3>
+        <p>Keberangkatan September 2026</p>
+      </div>
+
+      <div class="card-content">
+
+        <div class="table-wrap">
+
+          <table>
+
+            <tr>
+              <th>Nama Jamaah</th>
+              <th>Kota</th>
+              <th>Status</th>
+            </tr>
+
+            <tr>
+              <td>Dedi Supriyadi</td>
+              <td>Garut</td>
+              <td>
+                <span class="status process">
+                  Proses
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Rahmawati</td>
+              <td>Depok</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Imam Setiawan</td>
+              <td>Bogor</td>
+              <td>
+                <span class="status complete">
+                  Lengkap
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Neng Sulastri</td>
+              <td>Subang</td>
+              <td>
+                <span class="status ready">
+                  Ready
+                </span>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURE -->
+
+<section class="section">
+
+  <div class="section-title" data-aos="fade-up">
+    <h2>Keunggulan Travel Kami</h2>
+    <p>Pelayanan terbaik untuk kenyamanan jamaah</p>
+  </div>
+
+  <div class="feature-grid">
+
+    <div class="feature-card" data-aos="zoom-in-up">
+      <div class="feature-icon">🕋</div>
+      <h3>Pembimbing Profesional</h3>
+      <p>Pembimbing ibadah berpengalaman selama perjalanan umroh.</p>
+    </div>
+
+    <div class="feature-card"
+    data-aos="zoom-in-up"
+    data-aos-delay="100">
+
+      <div class="feature-icon">🏨</div>
+      <h3>Hotel Nyaman</h3>
+      <p>Hotel dekat Masjidil Haram dan Masjid Nabawi.</p>
+    </div>
+
+    <div class="feature-card"
+    data-aos="zoom-in-up"
+    data-aos-delay="200">
+
+      <div class="feature-icon">✈️</div>
+      <h3>Penerbangan Aman</h3>
+      <p>Menggunakan maskapai terpercaya dengan jadwal terbaik.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="section">
+
+  <div class="cta" data-aos="zoom-in">
+
+    <h2>
+      Ingin Menjadi Jamaah Berikutnya?
+    </h2>
+
+    <p>
+      Segera daftar dan dapatkan promo spesial keberangkatan bulan ini.
+    </p>
+
+    <a href="#" class="btn-primary">
+      Daftar Sekarang
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-grid">
+
+    <div>
+      <h3>Travel Umroh Barokah</h3>
+      <p>
+        Travel umroh terpercaya dengan pelayanan profesional dan fasilitas terbaik.
+      </p>
+    </div>
+
+    <div>
+      <h3>Kontak Kami</h3>
+      <p>📞 0812-3456-7890</p>
+      <p>📧 info@travelumroh.com</p>
+      <p>📍 Garut, Indonesia</p>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 Travel Umroh Barokah
+  </div>
+
+</footer>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/6281234567890"
+class="whatsapp">
+
+  <img
+  src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+  alt="WhatsApp">
+
+</a>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+  duration:1000,
+  once:false,
+  offset:120,
+  easing:'ease-in-out'
+});
+
+</script>
+
+</body>
+</html>
